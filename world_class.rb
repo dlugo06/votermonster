@@ -13,13 +13,11 @@ attr_reader :republicans, :democrats
 
   def simulation
     categorize_politicians
-    puts "The republicans are:"
-      @republicans.each{|i| puts i[0]}
-    puts "\nThe democrats are:"
-      @democrats.each{|i| puts i[0]}
+    # puts "The republicans are:"
+    #   @republicans.each{|i| puts i[0]}
+    # puts "\nThe democrats are:"
+    #   @democrats.each{|i| puts i[0]}
   end
-
-
 
 private
 #this is meant to separate the list of all politicians to a list of democrats and a list of republicans
@@ -36,18 +34,14 @@ private
   end
 end
 
-# begin
-#   rescue => e
-#     puts "Look for potential nil value in @polititcians_list array."
-#     e.backtrace
-#   ensure
-# end
 
+def test_simulation
+  pol = [["jimmy", "democrat"], ["Red", "republican"], ["Glenn", "republican"], ["Megan", "democrat"]]
+  # pol2 = [{"Jimmy LAST" => "Democrat"}, {"Red First" => "Republican"}]
+  world_sim = World.new(pol)
+  world_sim.simulation
+  p world_sim.republicans == [["Red", "republican"], ["Glenn", "republican"]]
+  p world_sim.democrats == [["jimmy", "democrat"], ["Megan", "democrat"]]
+end
 
-pol = [["jimmy", "democrat"], ["Red", "republican"], ["Glenn", "republican"], ["Megan", "democrat"]]
-
-# pol2 = [{"Jimmy LAST" => "Democrat"}, {"Red First" => "Republican"}]
-
-world = World.new(pol)
-world.simulation
-# world.democrats.each {|i| puts i[0]}
+test_simulation
