@@ -26,8 +26,8 @@ class Test
 
   def create_all_politicians(reps, dems)
     names = (reps+dems).times.map {Faker::Name.name}
-    keys = [:name, :party]
-    all = []
+    p keys = [:name, :party]
+    p all = []
     all << Array.new(reps, "republican")
     all << Array.new(dems, "democrat")
     all.flatten!
@@ -53,6 +53,6 @@ class Test
 end
 
 test_1 = Test.new
-test_1.create_all_politicians(15, 6)
-test_1.create_all_voters(3405, 252, 5424, 126, 3405)
+p test_1.create_all_politicians(15, 6)
+p test_1.create_all_voters(3405, 252, 5424, 126, 3405)
 test_1.test_simulation

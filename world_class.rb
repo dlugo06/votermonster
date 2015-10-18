@@ -1,12 +1,16 @@
-class World
-# require_relative 'voter_module.rb'
-# include MainMenu
-  attr_reader :republicans_on_ballot, :democrats_on_ballot, :tea_party_members, :conservatives, :neutrals, :liberals, :socialists, :overall_winner, :votes, :VOTER_ASSOCIATIONS
 
-  def initialize(politician_list, voter_list)
+# require_relative 'voter_module'
+# require_relative 'c_person'
+# include MainMenu
+# include ClassPersonFactory
+
+class World
+  attr_accessor :republicans_on_ballot, :democrats_on_ballot, :tea_party_members, :conservatives, :neutrals, :liberals, :socialists, :overall_winner, :votes, :VOTER_ASSOCIATIONS, :politician_list
+
+  def initialize
     #People type aggregate
-    @voter_list = voter_list
-    @politician_list = politician_list
+    @voter_list = []
+    @politician_list = []
 
     #candidates by category
     @republicans_on_ballot = []
@@ -57,6 +61,22 @@ class World
     else
       @overall_winner << @democratic_winner
     end
+  end
+
+  def politician_create(name, party)
+    x = Politician.new(name, party)
+    h = Hash.new
+    h[:name] = x.name
+    h[:party] = x.party
+    @politician_list << h
+  end
+
+  def voter_create(name, affiliation)
+    p v = Voter.new(name, affiliation) #gets information and transfers to appropriate list
+    h = Hash.new
+    h[:name] = v.name
+    h[:affiliation] = v.affiliation
+    @voter_list << h
   end
 
 private
