@@ -100,19 +100,6 @@ private
   end
 end
 
-# def choose_weighted(weighted)
-#   sum = weighted.inject(0) do |sum, item_and_weight|
-#     sum += item_and_weight[1]
-#   end
-#   target = rand(sum)
-#   weighted.each do |item, weight|
-#     return item if target <= weight
-#     target -= weight
-#   end
-# end
-# 10.times{puts choose_weighted(@TEA_PARTY_PROBABLITY)}
-
-
 def test_simulation
   all_politicians = [{name: "jimmy blue", party: "democrat"},
           {name: "red guy", party: "republican"},
@@ -128,8 +115,6 @@ def test_simulation
                 {name: "radical randy", affiliation: "socialist"},
                 {name: "luantic larry", affiliation: "conservative"},
                 {name: "stayathome gunman", affiliation: "conservative"}]
-
-  tea_party_probablity = {republican: 9, democrat: 1}
   world_sim = World.new(all_politicians,all_voters)
   world_sim.simulation
   puts "#{world_sim.votes.size} votes were counted"
